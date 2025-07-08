@@ -43,7 +43,6 @@ function hook_picture(){
         Canvas.drawBitmap.overload(
             "android.graphics.Bitmap", "android.graphics.Rect", "android.graphics.Rect", "android.graphics.Paint"
         ).implementation = function (bitmap, srcRect, dstRect, paint) {
-            logBitmap(bitmap, "Rect/Rect");
             // count++
             // dumpBitmap(bitmap, `rect${count}`)
             const width = bitmap.getWidth();
@@ -51,11 +50,7 @@ function hook_picture(){
 
             // console.log(width + "   " + height)
             //根据前面Rect的hook点获得的水印bitmap的大小进行修改
-            if (width === 325 && height === 103) {
-                console.warn(`[HOOK] Blocked watermark bitmap: ${width}x${height}`);
-                const empty = getTransparentBitmap(width, height)
-                return this.drawBitmap(empty, srcRect, dstRect, paint);
-            }else if(width === 138 && height === 172){
+            if (width < 400 && height < 150) {
                 console.warn(`[HOOK] Blocked watermark bitmap: ${width}x${height}`);
                 const empty = getTransparentBitmap(width, height)
                 return this.drawBitmap(empty, srcRect, dstRect, paint);
