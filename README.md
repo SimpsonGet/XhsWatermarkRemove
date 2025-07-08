@@ -1,4 +1,6 @@
 # XhsWatermarkRemove
+## frida
+
 frida脚本实现小红书保存图片不加水印
 
 使用该脚本前还需要常规hook  libmsaoaidsec.so 的相关操作（x红薯也是采用的这个so文件检测frida）
@@ -23,3 +25,17 @@ x红薯水印分成两块内容（logo水印+文字水印）
 2、hook获得原始图片，保存在自定义路径（目前保存在sdcard目录下）
 
 ✅优点：直接获得了原始图片
+
+
+
+## Xposed
+
+将frida脚本固化为xposed模块，日常驻留使用
+
++ 前提：在以及装了LSPosed手机上，安装release中的xhsXposed.apk即可使用
+
+![xposedOpen](ReadmePicture/xposedOpen.png)
+
+附上一张xhs下载的无水印猫图
+
+![1040g3k031j8o2p4mii505q0ggghji0q77fg497o](ReadmePicture/1040g3k031j8o2p4mii505q0ggghji0q77fg497o.jpg)
